@@ -1,0 +1,67 @@
+/* Additional styles for the triple view */
+.scales-container {
+    display: flex;
+    gap: 20px;
+}
+
+.scale-column {
+    flex: 1;
+}
+
+/* Dark mode column specific styling */
+.dark-mode-column {
+    background-color: #1a202c;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.dark-mode-column h2,
+.dark-mode-column .info-box {
+    color: #e2e8f0;
+}
+
+.dark-mode-column .info-box {
+    background-color: #2d3748;
+    border-left-color: #90cdf4;
+}
+
+/* Make the CSS output section wider for triple view */
+.css-output-section {
+    margin-top: 40px;
+}
+
+.css-output {
+    max-height: 200px;
+}
+
+/* Add a dark mode preview to the header */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.button:hover {
+    background-color: var(--button-hover);
+}
+
+@media (max-width: 1200px) {
+    .scales-container {
+        flex-direction: column;
+    }
+
+    .scale-column {
+        width: 100%;
+    }
+}

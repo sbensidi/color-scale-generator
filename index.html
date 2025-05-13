@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Color Scale Generator</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/light-theme.css" id="theme-stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Enhanced Color Scale Generator</h1>
+        <div class="theme-toggle">
+            <label for="darkModeToggle">Dark Mode</label>
+            <input type="checkbox" id="darkModeToggle">
+        </div>
+    </header>
+
+    <p class="description">
+        Enter a base color (level 400) to generate a complete color scale from 100 to 700.
+        You can enter a HEX color with or without the # prefix, or use the color picker.
+    </p>
+
+    <div class="formula-explanation">
+        <h3>How the Color Scale Works</h3>
+        <div class="formula-content">
+            <p>This tool generates two complete color scales:</p>
+            <ul>
+                <li><strong>Original Scale:</strong> Based on your selected base color (level 400)</li>
+                <li><strong>Accessible Alternative:</strong> If your base color doesn't pass accessibility requirements
+                    for both black and white text, an alternative scale is shown with the closest accessible color</li>
+            </ul>
+            <p>Each scale automatically calculates:</p>
+            <ul>
+                <li><span class="highlight lighter">Lighter variants (100-300)</span> with increasing lightness and
+                    slightly decreasing saturation</li>
+                <li><span class="highlight darker">Darker variants (500-700)</span> with decreasing lightness and
+                    increasing saturation</li>
+            </ul>
+            <p class="note">The lighter shades never reach pure white, and the darker shades never reach pure black,
+                ensuring visual distinction at all levels.</p>
+            <div class="accessibility-note"><strong>Accessibility:</strong> The tool checks contrast against WCAG AA
+                standards for:
+                <ul class="accessibility-list">
+                    <li><strong>Normal text</strong> (4.5:1 ratio required): Text smaller than 18pt, or smaller than
+                        14pt if
+                        bold</li>
+                    <li><strong>Large text</strong> (3:1 ratio required): Text at least 18pt, or at least 14pt if bold
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-container">
+        <label for="baseColor">Base Color (400):</label>
+        <div class="color-input-group">
+            <input type="text" id="baseColor" placeholder="3791c6" value="3791c6">
+            <div class="color-preview" id="colorPreview"></div>
+            <input type="color" id="colorPicker" value="#3791c6" class="hidden-picker">
+        </div>
+    </div>
+
+    <div id="error" class="error">Please enter a valid HEX color code (e.g. #3791c6)</div>
+
+    <div class="results" id="results">
+        <div class="scales-container">
+            <!-- Original Scale Column -->
+            <div class="scale-column">
+                <h2>
+                    <span id="colorName">Original</span> Color Scale
+                    <span id="originalAccessibility" class="accessible-status accessible-true">Accessible</span>
+                </h2>
+                <div id="originalAccessibilityInfo" class="info-box accessible-info">
+                    The base color passes WCAG AA requirements.
+                </div>
+                <div class="color-scale" id="colorScale">
+                    <!-- Original color cards will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Alternative Scale Column -->
+            <div class="scale-column" id="alternativeScaleSection" style="display: none;">
+                <h2>Accessible Alternative</h2>
+                <div id="alternativeInfo" class="info-box accessible-info">
+                    Closest color that passes accessibility requirements.
+                </div>
+                <div class="color-scale" id="alternativeColorScale">
+                    <!-- Alternative color cards will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CSS Variables Output Section -->
+    <div class="css-output-section">
+        <h2>CSS Variables</h2>
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="light-mode">Light Mode</button>
+            <button class="tab-btn" data-tab="dark-mode">Dark Mode</button>
+        </div>
+        <div class="tab-content active" id="light-mode-content">
+            <pre id="lightModeCSS" class="css-output"></pre>
+            <button id="copyLightModeCSS" class="copy-btn">Copy</button>
+        </div>
+        <div class="tab-content" id="dark-mode-content">
+            <pre id="darkModeCSS" class="css-output"></pre>
+            <button id="copyDarkModeCSS" class="copy-btn">Copy</button>
+        </div>
+    </div>
+
+    <!-- JavaScript files -->
+    <script src="js/color-utils.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/scale-generator.js"></script>
+    <script src="js/dark-mode-generator.js"></script>
+    <script src="js/color-names-api.js"></script>
+    <script src="js/ui-controller.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+/* Dark theme specific variables */
+:root {
+    --primary-bg: #1a202c;
+    --text-color: #e2e8f0;
+    --border-color: #4a5568;
+    --input-bg: #2d3748;
+    --box-bg: #2d3748;
+    --header-bg: #4a5568;
+    --header-color: #90cdf4;
+    --divider-color: #4a5568;
+    --highlight-light-bg: rgba(144, 205, 244, 0.1);
+    --highlight-light-color: #90cdf4;
+    --highlight-dark-bg: rgba(160, 174, 192, 0.1);
+    --highlight-dark-color: #a0aec0;
+    --note-color: #a0aec0;
+}

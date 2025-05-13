@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Color Scale Generator - Triple View</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/triple-view.css">
+    <link rel="stylesheet" href="css/light-theme.css" id="theme-stylesheet">
+</head>
+
+<body>
+    <div class="page-header">
+        <h1>Enhanced Color Scale Generator - Triple View</h1>
+        <a href="index.html" class="button">Switch to Standard View</a>
+    </div>
+
+    <p class="description">
+        Enter a base color (level 400) to generate three complete color scales: original, accessible (if needed), and
+        dark mode.
+        All scales are displayed simultaneously for easy comparison.
+    </p>
+
+    <div class="input-container">
+        <label for="baseColor">Base Color (400):</label>
+        <div class="color-input-group">
+            <input type="text" id="baseColor" placeholder="3791c6" value="3791c6">
+            <div class="color-preview" id="colorPreview"></div>
+            <input type="color" id="colorPicker" value="#3791c6" class="hidden-picker">
+        </div>
+    </div>
+
+    <div id="error" class="error">Please enter a valid HEX color code (e.g. #3791c6)</div>
+
+    <div class="results" id="results">
+        <div class="scales-container">
+            <!-- Original Light Mode Scale Column -->
+            <div class="scale-column">
+                <h2>
+                    <span id="colorName">Original</span> Color Scale
+                    <span id="originalAccessibility" class="accessible-status accessible-true">Accessible</span>
+                </h2>
+                <div id="originalAccessibilityInfo" class="info-box accessible-info">
+                    The base color passes WCAG AA requirements.
+                </div>
+                <div class="color-scale" id="colorScale">
+                    <!-- Original color cards will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Accessible Alternative Scale Column (conditionally displayed) -->
+            <div class="scale-column" id="alternativeScaleSection" style="display: none;">
+                <h2>Accessible Alternative</h2>
+                <div id="alternativeInfo" class="info-box accessible-info">
+                    Closest color that passes accessibility requirements.
+                </div>
+                <div class="color-scale" id="alternativeColorScale">
+                    <!-- Alternative color cards will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Dark Mode Scale Column (always displayed) -->
+            <div class="scale-column dark-mode-column">
+                <h2>
+                    <span id="darkModeColorName">Dark Mode</span> Color Scale
+                </h2>
+                <div id="darkModeInfo" class="info-box">
+                    Optimized color scale for dark mode interfaces.
+                </div>
+                <div class="color-scale" id="darkModeColorScale">
+                    <!-- Dark mode color cards will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CSS Variables Output Section -->
+    <div class="css-output-section">
+        <h2>CSS Variables</h2>
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="light-mode">Light Mode</button>
+            <button class="tab-btn" data-tab="dark-mode">Dark Mode</button>
+        </div>
+        <div class="tab-content active" id="light-mode-content">
+            <pre id="lightModeCSS" class="css-output"></pre>
+            <button id="copyLightModeCSS" class="copy-btn">Copy</button>
+        </div>
+        <div class="tab-content" id="dark-mode-content">
+            <pre id="darkModeCSS" class="css-output"></pre>
+            <button id="copyDarkModeCSS" class="copy-btn">Copy</button>
+        </div>
+    </div>
+
+    <!-- JavaScript files -->
+    <script src="js/color-utils.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/scale-generator.js"></script>
+    <script src="js/dark-mode-generator.js"></script>
+    <script src="js/color-names-api.js"></script>
+    <script src="js/triple-view.js"></script>
+</body>
+
+</html>

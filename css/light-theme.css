@@ -1,0 +1,10 @@
+/* Light theme specific variables */
+:root {
+    --primary-bg: #f5f5f5;
+    --text-color: #333;
+    --border-color: #ddd;
+    --input-bg: #fff;
+    --box-bg: #f8f9fa;
+    --header-bg: #edf2f7;
+    --divider-color: #e0e0e0;
+}
